@@ -15,6 +15,7 @@ import com.util.Utility;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -84,6 +85,12 @@ public class ChooseAreaActivity  extends Activity{
 				}else if (currentLevel == LEVEL_CITY) {
 					selectedCity = cityList.get(arg2);
 					queryCounties();
+				}else if (currentLevel == LEVEL_COUNTY) {
+					String weatherId = countyList.get(arg2).getWeatherId();
+					Intent intent = new Intent(ChooseAreaActivity.this, WeatherActivity.class);
+					intent.putExtra("weather_id", weatherId);
+					startActivity(intent);
+					
 				}
 			}
 		});
