@@ -62,7 +62,7 @@ public class CoolWeatherDB {
 				Province province = new Province();
 				province.setId(cursor.getInt(cursor.getColumnIndex("id")));
 				province.setProvinceName(cursor.getString(cursor.getColumnIndex("province_name")));
-				province.setProvinceCode(cursor.getString(cursor.getColumnIndex("province_code")));
+				province.setProvinceCode(cursor.getInt(cursor.getColumnIndex("province_code")));
 				list.add(province);
 			} while (cursor.moveToNext());
 		}
@@ -85,13 +85,13 @@ public class CoolWeatherDB {
 	//将数据库读取某省下所有的城市信息
 	public List<City> loadCities(int provinceId) {
 		List<City> list = new ArrayList<City>();
-		Cursor cursor = db.query("City", null , "province = ?", new String[]{String.valueOf(provinceId)}, null, null, null);
+		Cursor cursor = db.query("City", null , "province_id = ?", new String[]{String.valueOf(provinceId)}, null, null, null);
 		if (cursor.moveToFirst()) {
 			do {
 				City city = new City();
 				city.setId(cursor.getInt(cursor.getColumnIndex("id")));
 				city.setCityName(cursor.getString(cursor.getColumnIndex("city_name")));
-				city.setCityCode(cursor.getString(cursor.getColumnIndex("city_code")));
+				city.setCityCode(cursor.getInt(cursor.getColumnIndex("city_code")));
 				city.setProvindeId(provinceId);
 				list.add(city);
 			} while (cursor.moveToNext());
@@ -104,7 +104,7 @@ public class CoolWeatherDB {
 			ContentValues values = new ContentValues();
 			values.put("city_id", county.getCityId());
 			values.put("county_name", county.getCountyName());
-			values.put("county_code", county.getCountyCode());
+			values.put("weather_id", county.getWeatherId());
 			db.insert("County", null, values);
 			
 		}
@@ -112,13 +112,13 @@ public class CoolWeatherDB {
 	
 	public List<County> loadCounties(int cityId) {
 		List<County> list = new ArrayList<County>();
-		Cursor cursor = db.query("County", null, "city_id ?", new String[]{String.valueOf(cityId)}, null, null, null);
+		Cursor cursor = db.query("County", null, "city_id = ?", new String[]{String.valueOf(cityId)}, null, null, null);
 		if (cursor.moveToFirst()) {
 			do {
 				County county = new County();
 				county.setCityId(cityId);
 				county.setCountyName(cursor.getString(cursor.getColumnIndex("county_name")));
-				county.setCountyCode(cursor.getString(cursor.getColumnIndex("county_code")));
+				county.setWeatherId(cursor.getString(cursor.getColumnIndex("weather_id")));
 				county.setId(cursor.getInt(cursor.getColumnIndex("id")));
 				list.add(county);
 			} while (cursor.moveToNext());
