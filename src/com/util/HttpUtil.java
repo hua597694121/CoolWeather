@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import android.app.DownloadManager.Request;
+import okhttp3.OkHttpClient;
+
 public class HttpUtil {
 
 	public static void sendHttpRequest(final String address, final HttpCallbackListener listener) {
@@ -45,6 +48,24 @@ public class HttpUtil {
 			}
 		}).start();;
 	}
+	
+	
+	public static void sendOkHttpRequest(String address, okhttp3.Callback callback) {
+		OkHttpClient client = new OkHttpClient();
+		okhttp3.Request request = new okhttp3.Request.Builder().url(address).build();
+		client.newCall(request).enqueue(callback);		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

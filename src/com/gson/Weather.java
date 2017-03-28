@@ -2,6 +2,8 @@ package com.gson;
 
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Weather {
 		
 		public String status;
@@ -14,6 +16,8 @@ public class Weather {
 		
 		public Suggestion suggestion;
 		
+		
+		@SerializedName("daily_forecast")
 		public List<Forecast> forecastList;
 		
 	

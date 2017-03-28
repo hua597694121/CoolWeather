@@ -43,7 +43,7 @@
                    android:layout_gravity="center"
                    android:textColor="#fff"
                    android:textSize="40sp"
-                   android:text="30℃"/>
+                   />
                
                <TextView 
                    android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
 				    android:layout_gravity="center"
 				    android:textColor="#fff"
 				    android:textSize="40sp"
-				    android:text="30℃"
+				   
 				    />                
                 
                 <TextView 

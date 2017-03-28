@@ -6,7 +6,20 @@
     
     
     >
+    
+    
+		
+    
 
+        
+        
+        <ImageView 
+        android:id="@+id/bing_pic_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        />
+        
     <ScrollView 
         android:id="@+id/weather_layout"
         android:layout_width="match_parent"
@@ -28,11 +41,11 @@
        		<include layout ="@layout/suggestion" />
        		            
        </LinearLayout>
-        
-        
-        
-        
     </ScrollView>
+   
+    
+    
+ 
     
     
     
